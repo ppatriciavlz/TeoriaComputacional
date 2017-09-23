@@ -1,0 +1,92 @@
+/*
+ * AUTOMATA
+ * Expresión: aa(abc*)*
+ * Cadena: aaabcccccccc
+ */
+
+/**
+ *
+ * @author Patricia Velazquez 120623.
+ */
+
+
+
+public class Automata { 
+
+    int cont; 
+    boolean aceptada; /*SE GUARDAN Y SEPARAN CARACTERES DE LA CADENA*/ 
+    char [] car; 
+
+     public static void main(String[]args){  /*FUNCION PRINCIPAL*/ 
+        Automata aut= new Automata(); /* SE DECLARA EL OBJETO DE NUESTRO AUTOMATA */ 
+        String cadena = aaabcccccccc
+        aut.car=cadena.toCharArray(); /*ESTA ES LA MATRIZ DE LOS CARACTERES*/ 
+        aut.inicio(); 
+    } 
+     public void inicio (){ /* INICIO DE EL METODO*/ 
+         cont = 0; 
+         aceptada = false; 
+         q0(); /* RETURNA A Q0 DE INICIO CUANDO COMIENZA EL AUTOMATA*/ 
+     } 
+     public void q0(){ 
+         System.out.println("En q0"); /*ESTAR EN Q0*/ 
+         if(cont < car.length){ /*HAY QUE EXPRESAR LOS ESPACIOS DEL ARREGLO*/ 
+             if(car[cont]=='a'){ /*EN EL CONTADOR SE COMPARA QUE ESTE SEA IGUAL A 'a' * / 
+
+             cont++;
+             q0(); /*DEJAR EN CERO*/ 
+             }else if (car[cont]=='b'){ /*SI EXISTE UNA B, SE DEBE MOVER A LA FUNCION DE Q1*/ 
+                 cont++; 
+                 q1(); /*MOVERSE AL ESTADO UNO*/ 
+             } 
+             } 
+
+
+     } 
+     public void q1(){ 
+     System.out.println("En q1"); 
+         if(cont < car.length){ /*HAY QUE EXPRESAR LOS ESPACIOS DEL ARREGLO*/ 
+             if(car[cont]=='a'){ /*EN EL CONTADOR SE COMPARA QUE ESTE SEA IGUAL A 'a' * / 
+
+             cont++; 
+             q1(); 
+             }else if (car[cont]=='b'){ /*SI EXISTE UNA B, SE DEBE MOVER A LA FUNCION DE Q1*/ 
+                 cont++; 
+                 q2(); /*MOVERSE AL ESTADO DOS*/ 
+             } 
+             } 
+     } 
+     public void q2(){ 
+     System.out.println("En q2"); 
+         if(cont < car.length){ /*HAY QUE EXPRESAR LOS ESPACIOS DEL ARREGLO*/ 
+             if(car[cont]=='a'){ /*EN EL CONTADOR SE COMPARA QUE ESTE SEA IGUAL A 'a' * / 
+
+             cont++; 
+             q2(); 
+             }else if (car[cont]=='b'){ 
+                 cont++; 
+                 q3();/*MOVERSE AL ESTADO TRES*/ 
+             } 
+             } 
+     } 
+     public void q3(){ 
+     System.out.println("En q3 cadena aceptada"); 
+     aceptada = true; /* POR SI LA CADENA ES ACEPTADA*/ 
+         if(cont < car.length){ /*HAY QUE EXPRESAR LOS ESPACIOS DEL ARREGLO*/ 
+             if(car[cont]=='a'){ /*EN EL CONTADOR SE COMPARA QUE ESTE SEA IGUAL A 'a' * /
+
+             cont++; 
+             q3(); 
+             }else if (car[cont]=='b'){ 
+                 cont++; 
+                 qError(); /*MOVER A PRIMER ESTADO*/ 
+             } 
+             } 
+     } 
+     public void qError(){ 
+     System.out.println("Error"); 
+     aceptada = false; /*SI ES ACEPTADO TERMINA EL PROGRAMA */ 
+     return;
+     } 
+
+} 
